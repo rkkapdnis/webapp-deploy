@@ -19,7 +19,7 @@ jobs:
     - name: Replace IP in HTML
       run: |
     PUBLIC_IP=$(curl -s http://checkip.amazonaws.com)
-    sed "s/{{IP_ADDRESS}}/$PUBLIC_IP/" index.html.template > index.html
+    sed "s/{{IP_ADDRESS}}/$PUBLIC_IP/" webapp/index.html.template > webapp/index.html
 
     - name: SSH into EC2 and deploy
       uses: appleboy/ssh-action@master
