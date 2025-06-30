@@ -16,6 +16,11 @@ jobs:
     - name: Checkout Code
       uses: actions/checkout@v3
 
+    - name: Replace IP in HTML
+      run: |
+    PUBLIC_IP=$(curl -s http://checkip.amazonaws.com)
+    sed "s/{{IP_ADDRESS}}/$PUBLIC_IP/" index.html.template > index.html
+
     - name: SSH into EC2 and deploy
       uses: appleboy/ssh-action@master
       with:
